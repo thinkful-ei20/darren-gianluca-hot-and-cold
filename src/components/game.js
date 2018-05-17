@@ -11,7 +11,8 @@ export default class Game extends Component {
 		super(props);
 		this.state = {
 			answer: Math.floor(Math.random() * 100),
-			guesses: []
+			guesses: [],
+			winState: false
 		};
 	}
 
@@ -21,12 +22,27 @@ export default class Game extends Component {
 		});
 	}
 
+	restartGame(){
+		this.setState({
+			answer: Math.floor(Math.random() * 100),
+			guesses: [],
+			winState: false
+		});		
+	}
 	render(){
 		return (
 			<div>
-				<Header />
-				<GuessSection feedback={this.state.guesses} onGuess={(guess) => this.updateGuesses(guess)} />
+				<Header restartGame={() => this.restartGame()}/>
+				<GuessSection 
+					feedback={this.state.guesses}
+					onGuess={(guess) => this.updateGuesses(guess)}
+					answer={this.state.answer} 
+					winState={this.state.winState}
+					 
+				/>
+
 				<GuessCount count={this.state.guesses.length} />
+
 				<GuessList guesses={this.state.guesses} />
 			</div>
 		);

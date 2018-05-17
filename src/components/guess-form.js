@@ -4,16 +4,21 @@ import './guess-form.css';
 
 export default function GuessForm(props) {
 
+    const verfiyDuplicate = (value) => {
+        return props.feedback.includes(value)       
+    }
+
 	let guess = '';
 
 	const proccessSubmit = (event) => {
 		event.preventDefault();
-		const value = +guess.value; //coersion
-		if(value && (value > 0 && value <= 100)) {
+		let value = +guess.value; //coersion
+		if(value && (value > 0 && value <= 100) && !verfiyDuplicate(value)) {
 			props.onGuess(value);
 		} else {
-			alert('Input must be a valid number between 0 and 100(inclusive)');
-		}
+			alert('Input must be a unique number between 0 and 100(inclusive)');
+        }
+        guess.value = '';
 	};
 
 	return (
