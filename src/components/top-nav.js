@@ -1,5 +1,4 @@
 import React from 'react';
-
 import './top-nav.css';
 
 export default function TopNav(props) {
@@ -7,12 +6,12 @@ export default function TopNav(props) {
         <nav>
             <ul className="clearfix">
                 <li>
-                    <a className="what" href="#">
+                    <a className="what" href="#" onClick={() => props.showAbout()}>
                         What?
                     </a>
                 </li>
                 <li>
-                    <a className="new" href="#" onClick={e => props.restartGame()}>
+                    <a className="new" href="#" onClick={() => props.restartGame()}>
                         + New Game
                     </a>
                 </li>

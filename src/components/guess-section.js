@@ -14,8 +14,7 @@ export default function GuessSection(props) {
         const answer = props.answer;
         const difference = Math.abs(answer - lastGuess);
         if(difference === 0){
-            
-            return 'CORRECT';
+            return 'YOU WIN! if youd like to play again, press NEW GAME';
         } else if(difference <= 5) {
             return 'VERY hot'
         } else if(difference >5 && difference <= 10){
